@@ -13,12 +13,18 @@ public class EmployeeService {
     private List<Employee> list=new ArrayList<>();
 
     public List<Employee> getAllEmployee(){
+
         return list;
     }
 
     public Employee getEmployee(int id){
         Employee employee=null;
-        employee=list.stream().filter(e->e.getId()==id).findFirst().get();
+        try{
+            employee=list.stream().filter(e->e.getId()==id).findFirst().get();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         return employee;
     }
 
